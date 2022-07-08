@@ -1,6 +1,5 @@
 package com.testsigma.automator.runners;
 
-import com.github.javafaker.Faker;
 import com.testsigma.automator.constants.ErrorCodes;
 import com.testsigma.automator.constants.AutomatorMessages;
 import com.testsigma.automator.entity.TestCaseResult;
@@ -9,6 +8,7 @@ import com.testsigma.automator.exceptions.AutomatorException;
 import com.testsigma.automator.exceptions.TestsigmaInvalidClassException;
 import com.testsigma.automator.exceptions.TestsigmaInvalidParameterDataException;
 import com.testsigma.automator.testdata.functions.*;
+import io.github.serpro69.kfaker.Faker;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.log4j.Log4j2;
@@ -67,27 +67,28 @@ public class DefaultDataGeneratorsExecutor extends FunctionExecutor {
 
   public Object getDefaultTestDataFunctionInstance(String className)
     throws TestsigmaInvalidClassException {
+    Faker faker = new Faker();
     switch (className) {
       case "Number":
-        return new Faker().number();
+        return faker.number();
       case "Name":
-        return new Faker().name();
+        return faker.getName();
       case "PhoneNumber":
-        return new Faker().phoneNumber();
+        return faker.getPhoneNumber();
       case "DateAndTime":
-        return new Faker().date();
+        return faker.date();
       case "Internet":
-        return new Faker().internet();
+        return faker.getInternet();
       case "File":
-        return new Faker().file();
+        return faker.getFile();
       case "Friends":
-        return new Faker().friends();
+        return faker.getFriends();
       case "IdNumber":
-        return new Faker().idNumber();
+        return faker.getIdNumber();
       case "Address":
-        return new Faker().address();
+        return faker.getAddress();
       case "Company":
-        return new Faker().company();
+        return faker.getCompany();
       case "DateFunctions":
         return new DateFunctions();
       case "DomainFunctions":

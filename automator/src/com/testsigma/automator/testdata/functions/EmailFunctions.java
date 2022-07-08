@@ -1,7 +1,7 @@
 package com.testsigma.automator.testdata.functions;
 
-import com.github.javafaker.Faker;
-import com.github.javafaker.Internet;
+import io.github.serpro69.kfaker.Faker;
+import io.github.serpro69.kfaker.provider.Internet;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class EmailFunctions {
@@ -9,7 +9,7 @@ public class EmailFunctions {
   Internet domain = null;
 
   public EmailFunctions() {
-    domain = new Faker().internet();
+    domain = new Faker().getInternet();
   }
 
   public String userName(int length) {
@@ -19,7 +19,7 @@ public class EmailFunctions {
 
   public String randomAlphanumaricEmail(int length) {
     String generateString = RandomStringUtils.randomAlphanumeric(length).toLowerCase();
-    return new StringBuffer().append(generateString).append("@").append(domain.domainName()).toString();
+    return domain.safeEmail(generateString);
 
   }
 
@@ -36,7 +36,7 @@ public class EmailFunctions {
 
   public String randomEmail(int length) {
     String generateString = RandomStringUtils.randomAlphabetic(length).toLowerCase();
-    return new StringBuffer().append(generateString).append("@").append(domain.domainName()).toString();
+    return domain.safeEmail(generateString);
   }
 
 }

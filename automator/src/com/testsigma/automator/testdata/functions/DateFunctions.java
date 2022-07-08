@@ -1,8 +1,5 @@
 package com.testsigma.automator.testdata.functions;
 
-import com.github.javafaker.DateAndTime;
-import com.github.javafaker.Faker;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
